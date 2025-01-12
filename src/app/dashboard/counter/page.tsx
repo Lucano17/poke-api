@@ -1,3 +1,9 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Counter Page",
+    description: "Un Simple contador",
+}
 
 export default function NamePage() {
   return (
