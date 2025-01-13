@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { IoBrowsersOutline, IoCalculator, IoLogoReact } from "react-icons/io5";
+import { RiNextjsLine } from "react-icons/ri";
 import { MdCatchingPokemon } from "react-icons/md";
 import { SidebarMenuItem } from "./SideBarMenuItem";
 
@@ -31,7 +32,7 @@ export const Sidebar = () => {
         <h1 className="flex items-center  text-lg md:text-2xl font-bold text-white">
           Poke Api
           <span className="text-blue-500">
-            <IoLogoReact className="mr-2" />
+            <RiNextjsLine className="ml-4" size={30}/>
           </span>
         </h1>
         <p className="text-slate-500 text-sm">
