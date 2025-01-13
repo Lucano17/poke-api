@@ -17,19 +17,21 @@ const getPokemons = async (
   return pokemons;
 };
 
-export default async function NamePage() {
+export default async function PokemonPage() {
   const pokemons = await getPokemons();
   return (
     <div className="flex flex-col">
       <div className="flex flex-wrap gap-10 items-center justify-center">
         {pokemons.map((pokemon) => (
-          <Image
-          key={pokemon.id}
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
-            width={80}
-            height={80}
-            alt={pokemon.name}
-          />
+          <div key={pokemon.id}>
+            <Image
+              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
+              width={70}
+              height={70}
+              alt={pokemon.name}
+            />
+            <span>#{pokemon.id} {pokemon.name}</span>
+          </div>
         ))}
       </div>
     </div>
