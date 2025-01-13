@@ -4,12 +4,20 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 interface Props {
-  params: { id: string };
+  params: {name: string };
+}
+
+export async function generateStaticParams() {
+  const staticPokemonPages = Array.from({length: 151}).map((v, i) => `${i + 1}`)
+
+  return staticPokemonPages.map(id => ({
+    id: id
+  }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     try {
-        const { name } = await getPokemon(params.id);
+        const { id, name } = await getPokemon(params.name);
         return {
           title: `Poke Api | ${name.charAt(0).toUpperCase() + name.slice(1)}`,
           description: `Página del pokémon ${
@@ -25,10 +33,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     }
 }
 
-const getPokemon = async (id: string): Promise<Pokemon> => {
+const getPokemon = async (name: string): Promise<Pokemon> => {
     try {
-        const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-          cache: "force-cache",
+        const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
+          next: {
+            revalidate: 60 * 60 * 30 * 6
+          }
         }).then((resp) => resp.json());
       
         return pokemon;
@@ -39,7 +49,7 @@ const getPokemon = async (id: string): Promise<Pokemon> => {
 };
 
 export default async function PokemonPage({ params }: Props) {
-  const pokemon = await getPokemon(params.id);
+  const pokemon = await getPokemon(params.name);
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">
       <div className="relative flex flex-col items-center rounded-[20px] w-[700px] mx-auto bg-white bg-clip-border  shadow-lg  p-3">
@@ -80,7 +90,7 @@ export default async function PokemonPage({ params }: Props) {
           <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg ">
             <p className="text-sm text-gray-600">Peso</p>
             <span className="text-base font-medium text-navy-700 flex">
-              {pokemon.weight}
+              {pokemon.weight}kg
             </span>
           </div>
 

@@ -3,10 +3,10 @@ import { PokemonsResponse, SimplePokemon } from "@/interfaces";
 import Image from 'next/image';
 import { PokemonCard } from '@/components';
 
-const totalPokemons = 1302
+const totalPokemons = 1025
 
 const getPokemons = async (
-  limit = 1302,
+  limit = 151,
   offset = 0
 ): Promise<SimplePokemon[]> => {
   const data: PokemonsResponse = await fetch(

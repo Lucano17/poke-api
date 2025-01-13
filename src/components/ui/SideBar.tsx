@@ -25,7 +25,7 @@ export const Sidebar = () => {
   return (
     <div
       id="menu"
-      style={{ width: "400px" }}
+      style={{ width: "350px" }}
       className="bg-gray-900 min-h-screen text-slate-300 w-64 left-0 overflow-y-scroll"
     >
       <div id="logo" className="my-4 px-6">
