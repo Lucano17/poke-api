@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     title: "Favoritos",
     description: "Tus pokémons favoritos!"
 }
-export default async function FavouritesPokemonPage() {
+export default async function FavouritesPage() {
   
   return (
     <div className="flex flex-col">
