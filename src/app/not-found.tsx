@@ -1,4 +1,4 @@
-import { Sidebar } from '@/components'
+import { SideBar } from '@/components'
 import Link from 'next/link'
 
 export default function NotFound() {
@@ -7,7 +7,7 @@ export default function NotFound() {
 
       <div className="flex">
 
-        <Sidebar />
+        <SideBar />
 
         <div className=" w-full text-slate-900">
           

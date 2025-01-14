@@ -7,12 +7,12 @@ import {
 } from "react-icons/io5";
 import { RiNextjsLine } from "react-icons/ri";
 import { MdCatchingPokemon } from "react-icons/md";
-import { SidebarMenuItem } from "./SideBarMenuItem";
+import { SideBarMenuItem } from "./SideBarMenuItem";
 import Link from "next/link";
 
 const menuItems = [
   {
-    path: "/dashboard/main",
+    path: "/main",
     icon: (
       <MdCatchingPokemon size={40} style={{ transform: "rotate(180deg)" }} />
     ),
@@ -20,20 +20,20 @@ const menuItems = [
     subTitle: "Todos los pokémon",
   },
   {
-    path: "/dashboard/types-table",
+    path: "/types-table",
     icon: <IoCalculator size={40} />,
     title: "Tabla de tipos",
     subTitle: "Tabla de tipos de Pokémon",
   },
   {
-    path: "/dashboard/favourites",
+    path: "/favourites",
     icon: <IoHeartOutline size={40} />,
     title: "Favoritos",
     subTitle: "Tus pokémons favoritos!",
   },
 ];
 
-export const Sidebar = () => {
+export const SideBar = () => {
   return (
     <div
       id="menu"
@@ -79,7 +79,7 @@ export const Sidebar = () => {
 
       <div id="nav" className="w-full px-6 mt-14">
         {menuItems.map((item) => (
-          <SidebarMenuItem key={item.path} {...item} />
+          <SideBarMenuItem key={item.path} {...item} />
         ))}
       </div>
     </div>

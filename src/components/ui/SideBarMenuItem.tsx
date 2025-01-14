@@ -14,7 +14,7 @@ interface Props {
 
 
 
-export const SidebarMenuItem = ({ path, icon, title, subTitle }: Props) => {
+export const SideBarMenuItem = ({ path, icon, title, subTitle }: Props) => {
 
   const currentPath = usePathname();
 
