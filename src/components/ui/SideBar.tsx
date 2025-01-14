@@ -20,10 +20,10 @@ const menuItems = [
     subTitle: "Todos los pokémon",
   },
   {
-    path: "/dashboard/counter",
+    path: "/dashboard/types-table",
     icon: <IoCalculator size={40} />,
-    title: "Counter",
-    subTitle: "Contador Client Side",
+    title: "Tabla de tipos",
+    subTitle: "Tabla de tipos de Pokémon",
   },
   {
     path: "/dashboard/favourites",
@@ -59,7 +59,7 @@ export const Sidebar = () => {
         </Link>
       </div>
 
-      <div id="profile" className="px-6 py-10">
+      {/* <div id="profile" className="px-6 py-10">
         <p className="text-slate-500">Welcome back,</p>
         <a href="#" className="inline-flex space-x-2 items-center">
           <span>
@@ -75,9 +75,9 @@ export const Sidebar = () => {
             Fernando Herrera
           </span>
         </a>
-      </div>
+      </div> */}
 
-      <div id="nav" className="w-full px-6">
+      <div id="nav" className="w-full px-6 mt-14">
         {menuItems.map((item) => (
           <SidebarMenuItem key={item.path} {...item} />
         ))}
