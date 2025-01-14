@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import pokemonsReducer from './pokemon/pokemons'
+import { localStorageMiddleware } from './middlewares/localStorage-middleware'
 
 export const store = configureStore({
   reducer: {
     pokemons: pokemonsReducer
   },
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware()
+  //   .concat(localStorageMiddleware)
+    
+  
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
@@ -14,4 +19,4 @@ export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
 
 export const useAppDispatch: () => AppDispatch = useDispatch
-export const useAppSelector: TypedUseSelectorHook<RootState>= useSelector;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
