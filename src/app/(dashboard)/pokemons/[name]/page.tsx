@@ -65,7 +65,7 @@ export default async function PokemonPage({ params }: Props) {
     <div className="flex mt-5 flex-col items-center text-slate-800">
       <div className="relative flex flex-col items-center rounded-[20px] w-[700px] mx-auto bg-white bg-clip-border  shadow-lg  p-3">
         <div className="mt-2 mb-8 w-full">
-          <h1 className="px-2 text-xl font-bold text-slate-700 capitalize">
+          <h1 className="px-2 text-2xl font-bold text-slate-700 capitalize">
             #{pokemon.id} {pokemon.name}
           </h1>
           <div className="flex flex-col justify-center items-center">
@@ -77,10 +77,11 @@ export default async function PokemonPage({ params }: Props) {
               className="mb-5"
             />
 
+              <h2 className="font-bold text-xl">Movements</h2>
             <div className="flex flex-wrap">
               {pokemon.moves.map((move) => (
                 <p key={move.move.name} className="mr-2 capitalize">
-                  {move.move.name}
+                  {move.move.name} |
                 </p>
               ))}
             </div>
