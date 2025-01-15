@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { JSX } from "react";
+import { JSX, useState } from "react";
 
 interface Props {
   path: string;
@@ -16,6 +16,7 @@ interface Props {
 
 export const SideBarMenuItem = ({ path, icon, title, subTitle }: Props) => {
 
+
   const currentPath = usePathname();
 
   return (
@@ -23,7 +24,9 @@ export const SideBarMenuItem = ({ path, icon, title, subTitle }: Props) => {
           className={`
             w-full px-2 inline-flex space-x-2 items-center border-b border-slate-700 py-3 hover:bg-white/5 transition ease-linear duration-150
             ${ currentPath === path ? 'bg-blue-800': '' }
-          `}>
+          `}
+          // onClick={closeMenu}
+          >
       <div>
        <div>
         { icon }

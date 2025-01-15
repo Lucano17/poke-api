@@ -1,11 +1,16 @@
 "use client";
 
-import { IoCalculator, IoHeartOutline } from "react-icons/io5";
+import {
+  IoCalculator,
+  IoCloseCircleOutline,
+  IoHeartOutline,
+} from "react-icons/io5";
 import { RiNextjsLine } from "react-icons/ri";
 import { MdCatchingPokemon } from "react-icons/md";
 import { SideBarMenuItem } from "./SideBarMenuItem";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useUIStore } from "@/store/ui/ui-store";
 
 const menuItems = [
   {
@@ -31,6 +36,9 @@ const menuItems = [
 ];
 
 export const FullMenu = () => {
+  const isFullMenuOpen = useUIStore((state) => state.isFullMenuOpen)
+  const closeFullMenu = useUIStore((state) => state.closeFullMenu);
+
 
   return (
     <div id="menu">
@@ -59,8 +67,17 @@ export const FullMenu = () => {
 
         <div id="nav" className="w-full px-6 mt-14">
           {menuItems.map((item) => (
-            <SideBarMenuItem key={item.path} {...item} />
+            <div>
+              <SideBarMenuItem key={item.path} {...item} />
+            </div>
           ))}
+        </div>
+
+        <div className="flex m-auto" >
+          <button onClick={closeFullMenu}>
+
+          <IoCloseCircleOutline />
+          </button>
         </div>
       </div>
     </div>
