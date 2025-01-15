@@ -1,4 +1,5 @@
 import { SideBar } from '@/components';
+import { NavBar } from '@/components/ui/NavBar';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode; }) {
   return (
@@ -6,9 +7,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       <div className="flex">
 
-        <SideBar />
+        <NavBar />
 
-        <div className="p-2 w-full text-slate-900 ml-80">
+        <div className="p-2 w-full text-slate-900 sm2:mt-16 sm2:ml-0 sm:ml-80">
           { children }
         </div>
 
