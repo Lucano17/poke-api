@@ -30,38 +30,13 @@ const menuItems = [
   },
 ];
 
-export const SideBar = () => {
-  const [windowDimention, setWindowDimention] = useState({
-    width: 0,
-    height: 0,
-  });
-
-  useEffect(() => {
-    setWindowDimention({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
-
-    const detectDimention = () => {
-      setWindowDimention({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-
-    window.addEventListener("resize", detectDimention);
-    return () => {
-      window.removeEventListener("resize", detectDimention);
-    };
-  }, []);
+export const FullMenu = () => {
 
   return (
     <div id="menu">
       <div
-        style={
-          windowDimention.width < 700 ? { width: "250px" } : { width: "300px" }
-        }
-        className="fixed bg-gray-900 min-h-screen text-slate-300 w-64 left-0 overflow-y-scroll"
+        // style={{ width: "screen" }}
+        className="fixed bg-gray-900 min-h-screen min-w-full text-slate-300 w-64 left-0 overflow-y-scroll"
       >
         <div id="logo" className="my-4 px-6">
           <h1 className="flex items-center  text-lg md:text-2xl font-bold text-white">
