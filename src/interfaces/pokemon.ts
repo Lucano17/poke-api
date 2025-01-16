@@ -176,74 +176,92 @@ export interface Pokemon {
   export const pokemonTypes = {
     normal: {
       bgColor: "bg-orange-200",
+      textColor: "text-black",
       class: "bg-normal",
     },
     fire: {
       bgColor: "bg-red-600",
+      textColor: "text-white",
       class: "bg-fire",
     },
     water: {
       bgColor: "bg-blue-700",
+      textColor: "text-white",
       class: "bg-water",
     },
     electric: {
       bgColor: "bg-yellow-300",
+      textColor: "text-black",
       class: "bg-electric",
     },
     grass: {
       bgColor: "bg-green-700",
+      textColor: "text-white",
       class: "bg-grass",
     },
     ice: {
       bgColor: "bg-green-300",
+      textColor: "text-black",
       class: "bg-ice",
     },
     fighting: {
       bgColor: "bg-red-400",
+      textColor: "text-black",
       class: "bg-fighting",
     },
     poison: {
       bgColor: "bg-purple-500",
+      textColor: "text-white",
       class: "bg-poison",
     },
     ground: {
       bgColor: "bg-amber-800",
+      textColor: "text-white",
       class: "bg-ground",
     },
     flying: {
       bgColor: "bg-blue-100",
+      textColor: "text-black",
       class: "bg-flying",
     },
     psychic: {
       bgColor: "bg-pink-300",
+      textColor: "text-black",
       class: "bg-psychic",
     },
     bug: {
       bgColor: "bg-green-300",
+      textColor: "text-black",
       class: "bg-bug",
     },
     rock: {
       bgColor: "bg-amber-950",
+      textColor: "text-white",
       class: "bg-rock",
     },
     ghost: {
       bgColor: "bg-purple-950",
+      textColor: "text-white",
       class: "bg-ghost",
     },
     dragon: {
       bgColor: "bg-blue-950",
+      textColor: "text-white",
       class: "bg-dragon",
     },
     dark: {
       bgColor: "bg-gray-900",
+      textColor: "text-white",
       class: "bg-dark",
     },
     steel: {
       bgColor: "bg-slate-400",
+      textColor: "text-white",
       class: "bg-steel",
     },
     fairy: {
       bgColor: "bg-pink-600",
+      textColor: "text-black",
       class: "bg-fairy",
     },
   };

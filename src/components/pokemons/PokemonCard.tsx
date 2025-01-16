@@ -56,13 +56,16 @@ export const PokemonCard = ({ pokemonA }: Props) => {
         <div className="flex flex-col items-center justify-center text-center p-6 bg-gray-800 border-b">
           <div className="flex mb-4 gap-6">
             {pokemon?.types?.map((type) => {
-              const typeClass =
+              const typeBg =
                 pokemonTypes[type.type.name as keyof typeof pokemonTypes]
                   ?.bgColor;
+              const typeText =
+                pokemonTypes[type.type.name as keyof typeof pokemonTypes]
+                  ?.textColor;
               return (
                 <p
                   key={type.slot}
-                  className={`${typeClass}  rounded p-1 pt-0 capitalize text-white -mt-4 `}
+                  className={`${typeBg} ${typeText} rounded p-1 pt-0 capitalize  -mt-4 `}
                 >
                   {type.type.name}
                 </p>
