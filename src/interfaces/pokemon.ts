@@ -200,7 +200,7 @@ export interface Pokemon {
       class: "bg-grass",
     },
     ice: {
-      bgColor: "bg-green-300",
+      bgColor: "bg-blue-300",
       textColor: "text-black",
       class: "bg-ice",
     },

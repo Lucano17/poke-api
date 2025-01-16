@@ -1,4 +1,5 @@
 import { Pokemon, PokemonsResponse } from "@/interfaces";
+import { pokemonTypes } from "@/interfaces/pokemon";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -69,31 +70,36 @@ export default async function PokemonPage({ params }: Props) {
               alt={`Imagen del pokemon ${pokemon.name}`}
               className="mb-5"
             />
-
-            <h2 className="font-bold text-xl">Movements</h2>
-            <div className="flex flex-wrap">
-              {pokemon.moves.map((move) => (
-                <p key={move.move.name} className="mr-2 capitalize">
-                  {move.move.name} |
-                </p>
-              ))}
-            </div>
+            
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 px-2 w-full">
-          <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg ">
-            <p className="text-sm text-gray-600">Types</p>
+          <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg gap-5 ">
+            <p className="flex text-sm text-gray-600">Types</p>
             <div className="text-base font-medium text-navy-700 flex">
-              {pokemon.types.map((type) => (
-                <p key={type.slot} className="mr-2 capitalize">
-                  {type.type.name}
-                </p>
-              ))}
+              <div className="flex gap-3">
+                {pokemon?.types?.map((type) => {
+                  const typeBg =
+                    pokemonTypes[type.type.name as keyof typeof pokemonTypes]
+                      ?.bgColor;
+                  const typeText =
+                    pokemonTypes[type.type.name as keyof typeof pokemonTypes]
+                      ?.textColor;
+                  return (
+                    <p
+                      key={type.slot}
+                      className={`${typeBg} ${typeText} rounded p-1 pt-0 capitalize  -mt-4 `}
+                    >
+                      {type.type.name}
+                    </p>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
           <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg ">
-            <p className="text-sm text-gray-600">Peso</p>
+            <p className="text-sm text-gray-600">Weight</p>
             <span className="text-base font-medium text-navy-700 flex">
               {pokemon.weight}kg
             </span>
@@ -138,6 +144,16 @@ export default async function PokemonPage({ params }: Props) {
           </div>
         </div>
       </div>
+      <div className="flex flex-col">
+              <h2 className="font-bold text-xl m-auto">Movements</h2>
+              <div className="flex flex-wrap">
+                {pokemon.moves.map((move) => (
+                  <p key={move.move.name} className="mr-2 capitalize">
+                    {move.move.name} |
+                  </p>
+                ))}
+              </div>
+            </div>
     </div>
   );
 }
