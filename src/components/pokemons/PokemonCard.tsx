@@ -6,30 +6,67 @@ import { SimplePokemon } from "@/interfaces";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { useAppDispatch, useAppSelector } from "@/store";
 import { toggleFavourite } from "@/store/pokemon/pokemons";
+import { getPokemon } from "@/actions/getSimplePokemon";
+import { useEffect, useState } from "react";
 
 interface Props {
-  pokemon: SimplePokemon;
+  pokemonA: SimplePokemon;
 }
 
-export const PokemonCard = ({ pokemon }: Props) => {
-  const { id, name } = pokemon;
-  const isFavourite = useAppSelector((state) => !!state.pokemons.favourites[id]);
-  const dispatch = useAppDispatch()
+export const PokemonCard = ({ pokemonA }: Props) => {
+  const [pokemon, setPokemon] = useState<SimplePokemon>();
+
+  const { id, name, types } = pokemonA || {};
+  const isFavourite = useAppSelector(
+    (state) => !!state.pokemons.favourites[id]
+  );
+
+  const spriteUrl = id
+  ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
+  : '/path/to/default/image.svg';
+
+  const dispatch = useAppDispatch();
 
   const onToggle = () => {
-    dispatch(toggleFavourite(pokemon))
+    dispatch(toggleFavourite(pokemonA));
   };
+
+  useEffect(() => {
+    
+    const fetchSimplePokemon = async () => {
+    
+      if (!pokemonA) {
+        return <div>Loading...</div>; // O alguna imagen de carga
+      }
+      try {
+        const pokemonFetched = await getPokemon(name);
+        setPokemon(pokemonFetched);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchSimplePokemon()
+  }, [name]);
 
   return (
     <div className="mx-auto right-0 mt-2 w-55">
       <div className="flex flex-col bg-white rounded overflow-hidden shadow-lg">
         <div className="flex flex-col items-center justify-center text-center p-6 bg-gray-800 border-b">
+          
+          <div className="flex mb-3 gap-6">
+          {pokemon?.types?.map((type) => (
+            <p key={type.slot} className="mr-2 capitalize text-white">
+              {type.type.name}
+            </p>
+          ))}
+          </div>
+
           <Image
-            key={pokemon.id}
-            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.id}.svg`}
+            key={pokemon?.id}
+            src={spriteUrl}
             width={70}
             height={70}
-            alt={pokemon.name}
+            alt={pokemonA.name}
             priority={false}
           />
 

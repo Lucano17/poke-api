@@ -4,59 +4,52 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 interface Props {
-  params: {name: string };
+  params: { name: string };
 }
 
-
 export async function generateStaticParams() {
+  const data: PokemonsResponse = await fetch(
+    `https://pokeapi.co/api/v2/pokemon?limit=151/`
+  ).then((rest) => rest.json());
 
-    const data: PokemonsResponse = await fetch(
-      `https://pokeapi.co/api/v2/pokemon?limit=151/`
-    ).then((rest) => rest.json());
-  
-    const staticPokemonPages = data.results.map((pokemon) => ({
-      name: pokemon.name,
-    }));
-  
-    return staticPokemonPages.map(({name}) => ({
-      name: name
-    }))
-    
-  };
+  const staticPokemonPages = data.results.map((pokemon) => ({
+    name: pokemon.name,
+  }));
 
-
+  return staticPokemonPages.map(({ name }) => ({
+    name: name,
+  }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-    try {
-        const { id, name } = await getPokemon(params.name);
-        return {
-          title: `Poke Api | ${name.charAt(0).toUpperCase() + name.slice(1)}`,
-          description: `Página del pokémon ${
-            name.charAt(0).toUpperCase() + name.slice(1)
-          }`,
-        };
-
-    } catch (error){
-        return {
-            title: "Poke Api | Not found",
-            description: "Página del pokémon no encontrada"
-        }
-    }
+  try {
+    const { id, name } = await getPokemon(params.name);
+    return {
+      title: `Poke Api | ${name.charAt(0).toUpperCase() + name.slice(1)}`,
+      description: `Página del pokémon ${
+        name.charAt(0).toUpperCase() + name.slice(1)
+      }`,
+    };
+  } catch (error) {
+    return {
+      title: "Poke Api | Not found",
+      description: "Página del pokémon no encontrada",
+    };
+  }
 }
 
 const getPokemon = async (name: string): Promise<Pokemon> => {
-    try {
-        const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
-          next: {
-            revalidate: 60 * 60 * 30 * 6
-          }
-        }).then((resp) => resp.json());
-      
-        return pokemon;
+  try {
+    const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`, {
+      next: {
+        revalidate: 60 * 60 * 30 * 6,
+      },
+    }).then((resp) => resp.json());
 
-    } catch (error) {
-        notFound()
-    }
+    return pokemon;
+  } catch (error) {
+    notFound();
+  }
 };
 
 export default async function PokemonPage({ params }: Props) {
@@ -77,7 +70,7 @@ export default async function PokemonPage({ params }: Props) {
               className="mb-5"
             />
 
-              <h2 className="font-bold text-xl">Movements</h2>
+            <h2 className="font-bold text-xl">Movements</h2>
             <div className="flex flex-wrap">
               {pokemon.moves.map((move) => (
                 <p key={move.move.name} className="mr-2 capitalize">
