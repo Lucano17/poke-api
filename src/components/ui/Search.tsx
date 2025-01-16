@@ -38,7 +38,7 @@ export const Search = () => {
       value={query}
       onChange={(e) => setQuery(e.target.value)}
       placeholder={"Buscar pokémon... Nombre o ID"}
-      className="w-60 text-center "
+      className="w-60 p-2"
       />
       <button
       className=""
