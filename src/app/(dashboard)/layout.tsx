@@ -10,7 +10,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <NavBar />
         </div>
 
-        <div className="z-10 p-2 w-full text-slate-900 sm2:mt-16 sm2:ml-0 sm:ml-80">
+        <div className="z-10 p-2 w-full text-slate-900 sm2:mt-16 sm2:ml-0 sm:mt-0 sm:ml-80">
           { children }
         </div>
 
