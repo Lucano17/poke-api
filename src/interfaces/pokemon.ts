@@ -169,4 +169,82 @@ export interface Pokemon {
   export interface Type {
     slot: number;
     type: Species;
+    class: string;
   }
+
+
+  export const pokemonTypes = {
+    normal: {
+      bgColor: "bg-orange-200",
+      class: "bg-normal",
+    },
+    fire: {
+      bgColor: "bg-red-600",
+      class: "bg-fire",
+    },
+    water: {
+      bgColor: "bg-blue-700",
+      class: "bg-water",
+    },
+    electric: {
+      bgColor: "bg-yellow-300",
+      class: "bg-electric",
+    },
+    grass: {
+      bgColor: "bg-green-700",
+      class: "bg-grass",
+    },
+    ice: {
+      bgColor: "bg-green-300",
+      class: "bg-ice",
+    },
+    fighting: {
+      bgColor: "bg-red-400",
+      class: "bg-fighting",
+    },
+    poison: {
+      bgColor: "bg-purple-500",
+      class: "bg-poison",
+    },
+    ground: {
+      bgColor: "bg-amber-800",
+      class: "bg-ground",
+    },
+    flying: {
+      bgColor: "bg-blue-100",
+      class: "bg-flying",
+    },
+    psychic: {
+      bgColor: "bg-pink-300",
+      class: "bg-psychic",
+    },
+    bug: {
+      bgColor: "bg-green-300",
+      class: "bg-bug",
+    },
+    rock: {
+      bgColor: "bg-amber-950",
+      class: "bg-rock",
+    },
+    ghost: {
+      bgColor: "bg-purple-950",
+      class: "bg-ghost",
+    },
+    dragon: {
+      bgColor: "bg-blue-950",
+      class: "bg-dragon",
+    },
+    dark: {
+      bgColor: "bg-gray-900",
+      class: "bg-dark",
+    },
+    steel: {
+      bgColor: "bg-slate-400",
+      class: "bg-steel",
+    },
+    fairy: {
+      bgColor: "bg-pink-600",
+      class: "bg-fairy",
+    },
+  };
+  

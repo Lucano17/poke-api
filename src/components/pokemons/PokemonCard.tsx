@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/store";
 import { toggleFavourite } from "@/store/pokemon/pokemons";
 import { getPokemon } from "@/actions/getSimplePokemon";
 import { useEffect, useState } from "react";
+import { pokemonTypes, Type } from "@/interfaces/pokemon";
 
 interface Props {
   pokemonA: SimplePokemon;
@@ -17,13 +18,16 @@ export const PokemonCard = ({ pokemonA }: Props) => {
   const [pokemon, setPokemon] = useState<SimplePokemon>();
 
   const { id, name, types } = pokemonA || {};
+  // const typeClass = pokemon?.types[0].type.name as keyof typeof pokemonTypes;
+  // // const typeClass = pokemonTypes[type.type.name as keyof typeof pokemonTypes]?.class;
+
   const isFavourite = useAppSelector(
     (state) => !!state.pokemons.favourites[id]
   );
 
   const spriteUrl = id
-  ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
-  : '/path/to/default/image.svg';
+    ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`
+    : "/path/to/default/image.svg";
 
   const dispatch = useAppDispatch();
 
@@ -32,9 +36,7 @@ export const PokemonCard = ({ pokemonA }: Props) => {
   };
 
   useEffect(() => {
-    
     const fetchSimplePokemon = async () => {
-    
       if (!pokemonA) {
         return <div>Loading...</div>; // O alguna imagen de carga
       }
@@ -45,20 +47,27 @@ export const PokemonCard = ({ pokemonA }: Props) => {
         console.log(error);
       }
     };
-    fetchSimplePokemon()
+    fetchSimplePokemon();
   }, [name]);
 
   return (
-    <div className="mx-auto right-0 mt-2 w-55">
+    <div className="mx-auto right-0 mt-2 w-55 ">
       <div className="flex flex-col bg-white rounded overflow-hidden shadow-lg">
         <div className="flex flex-col items-center justify-center text-center p-6 bg-gray-800 border-b">
-          
-          <div className="flex mb-3 gap-6">
-          {pokemon?.types?.map((type) => (
-            <p key={type.slot} className="mr-2 capitalize text-white">
-              {type.type.name}
-            </p>
-          ))}
+          <div className="flex mb-4 gap-6">
+            {pokemon?.types?.map((type) => {
+              const typeClass =
+                pokemonTypes[type.type.name as keyof typeof pokemonTypes]
+                  ?.bgColor;
+              return (
+                <p
+                  key={type.slot}
+                  className={`${typeClass}  rounded p-1 pt-0 capitalize text-white -mt-4 `}
+                >
+                  {type.type.name}
+                </p>
+              );
+            })}
           </div>
 
           <Image
