@@ -80,7 +80,7 @@ export default async function PokemonPage({ params }: Props) {
         </div>
         <div className="grid grid-cols-2 gap-4 px-2 w-full">
           <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg gap-5 ">
-            <p className="flex text-sm text-gray-600">Types</p>
+            <p className="flex text-sm text-gray-600">Tipos</p>
             <div className="text-base font-medium text-navy-700 flex">
               <div className="flex gap-3">
                 {pokemon?.types?.map((type) => {
@@ -104,14 +104,14 @@ export default async function PokemonPage({ params }: Props) {
           </div>
 
           <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg ">
-            <p className="text-sm text-gray-600">Weight</p>
+            <p className="text-sm text-gray-600">Peso</p>
             <span className="text-base font-medium text-navy-700 flex">
               {pokemon.weight}kg
             </span>
           </div>
 
           <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg">
-            <p className="text-sm text-gray-600">Regular Sprites</p>
+            <p className="text-sm text-gray-600">Sprites regulares</p>
             <div className="flex justify-center">
               <Image
                 src={pokemon.sprites.front_default}
@@ -130,7 +130,7 @@ export default async function PokemonPage({ params }: Props) {
           </div>
 
           <div className="flex flex-col justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg">
-            <p className="text-sm text-gray-600">Shiny Sprites</p>
+            <p className="text-sm text-gray-600">Sprites shiny</p>
             <div className="flex justify-center">
               <Image
                 src={pokemon.sprites.front_shiny}
@@ -150,11 +150,11 @@ export default async function PokemonPage({ params }: Props) {
         </div>
       </div>
       <div className="flex flex-col">
-              <h2 className="font-bold text-xl m-auto">Movements</h2>
+              <h2 className="font-bold text-xl m-auto">Movimientos</h2>
               <div className="flex flex-wrap">
                 {pokemon.moves.map((move) => (
                   <p key={move.move.name} className="mr-2 capitalize">
-                    {move.move.name} |
+                   ° {move.move.name}
                   </p>
                 ))}
               </div>
