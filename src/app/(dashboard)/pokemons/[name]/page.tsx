@@ -24,7 +24,11 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
-    const { id, name } = await getPokemon(params.name);
+    const pokemon = await getPokemon(params.name);
+    if (!pokemon) throw new Error("Pokemon not found");
+    
+    const { name } = pokemon;
+
     return {
       title: `Poke Api | ${name.charAt(0).toUpperCase() + name.slice(1)}`,
       description: `Página del pokémon ${
@@ -38,6 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 }
+
 
 const getPokemon = async (name: string): Promise<Pokemon> => {
   try {

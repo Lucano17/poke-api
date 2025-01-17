@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-
 export const Search = () => {
   const [query, setQuery] = useState("");
   const [loading, setLoading] = useState(false);
@@ -12,8 +11,6 @@ export const Search = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
   };
-
-
 
   // # Search to URL Params function
   const handleSearch = async () => {
@@ -29,23 +26,24 @@ export const Search = () => {
     }
   };
 
-
   return (
-
-    <div className="flex justify-center ">
-    <input
-      type="text"
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      placeholder={"Buscar pokémon... Nombre o ID"}
-      className="w-60 p-2"
-      />
-      <button
-      className=""
-      onClick={handleSearch}
-      disabled={loading}>
-        {loading ? "Buscando..." : "Buscar"}
-      </button>
-  </div>
-
-)};
+    <div className="flex justify-center">
+      <form>
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder={"Pokémon o ID"}
+          className="w-60 p-2 border border-blue-300 rounded-l-md"
+        />
+        <button
+          className="border border-slate-400 rounded-r-md p-2 bg-slate-300"
+          onClick={handleSearch}
+          disabled={loading}
+        >
+          {loading ? "Buscando..." : "Buscar"}
+        </button>
+      </form>
+    </div>
+  );
+};
