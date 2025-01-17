@@ -3,6 +3,7 @@ import { pokemonTypes } from "@/interfaces/pokemon";
 import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { TiMediaPlay } from "react-icons/ti";
 
 interface Props {
   params: { name: string };
@@ -152,11 +153,14 @@ export default async function PokemonPage({ params }: Props) {
       <div className="flex flex-col">
               <h2 className="font-bold text-xl m-auto">Movimientos</h2>
               <div className="flex flex-wrap">
+                <ul className="flex flex-wrap">
+
                 {pokemon.moves.map((move) => (
-                  <p key={move.move.name} className="mr-2 capitalize">
-                   ° {move.move.name}
-                  </p>
+                  <li key={move.move.name} className="flex mr-2 capitalize">
+                   <TiMediaPlay size={10} className="mt-2"/> {move.move.name}
+                  </li>
                 ))}
+                </ul>
               </div>
             </div>
     </div>
