@@ -34,7 +34,7 @@ export const Search = () => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={"Pokémon o ID"}
-          className="w-60 p-2 border border-blue-300 rounded-l-md"
+          className="w-60 p-2 border border-blue-300 hover:border-blue-500 rounded-l-md"
         />
         <button
           className="border border-slate-400 rounded-r-md p-2 bg-slate-300 active:bg-slate-400 hover:border-slate-500"
