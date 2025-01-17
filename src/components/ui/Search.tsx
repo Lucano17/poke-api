@@ -37,7 +37,7 @@ export const Search = () => {
           className="w-60 p-2 border border-blue-300 rounded-l-md"
         />
         <button
-          className="border border-slate-400 rounded-r-md p-2 bg-slate-300"
+          className="border border-slate-400 rounded-r-md p-2 bg-slate-300 active:bg-slate-400 hover:border-slate-500"
           onClick={handleSearch}
           disabled={loading}
         >
