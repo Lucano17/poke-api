@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 import { TiMediaPlay } from "react-icons/ti";
 
 interface Props {
-  params: { name: string };
+  params: Promise<{ name: string }>;
 }
 
 
