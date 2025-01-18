@@ -86,7 +86,7 @@ export default async function PokemonPage({ params }: Props) {
               width={150}
               height={150}
               alt={`Imagen del pokemon ${pokemon.name}`}
-              className="mb-5"
+              className="mb-5 max-w-[150] max-h-[150]"
             />
             
           </div>
