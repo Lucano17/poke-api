@@ -13,7 +13,9 @@ export const Search = () => {
   };
 
   // # Search to URL Params function
-  const handleSearch = async () => {
+  const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
     if (!query) return;
 
     setLoading(true);
@@ -28,7 +30,7 @@ export const Search = () => {
 
   return (
     <div className="flex justify-center">
-      <form>
+      <form onSubmit={handleSearch}>
         <input
           type="text"
           value={query}
@@ -42,7 +44,7 @@ export const Search = () => {
           border-t-slate-400 rounded-r-md p-2 bg-slate-300 
           active:bg-slate-400 active:border-l-slate-600 active:border-t-slate-600 
           active:border-r-slate-400 active:border-b-slate-400"
-          onClick={handleSearch}
+          
           disabled={loading}
         >
           {loading ? "Buscando..." : "Buscar"}
