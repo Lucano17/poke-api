@@ -3,39 +3,47 @@
 import {
   IoCalculator,
   IoCloseCircleOutline,
+  IoHeart,
   IoHeartOutline,
 } from "react-icons/io5";
 import { RiNextjsLine } from "react-icons/ri";
 import { MdCatchingPokemon } from "react-icons/md";
 import { SideBarMenuItem } from "./SideBarMenuItem";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { useUIStore } from "@/store/ui/ui-store";
-
-const menuItems = [
-  {
-    path: "/main",
-    icon: (
-      <MdCatchingPokemon size={40} style={{ transform: "rotate(180deg)" }} />
-    ),
-    title: "Pokémons",
-    subTitle: "Todos los pokémon",
-  },
-  {
-    path: "/types-table",
-    icon: <IoCalculator size={40} />,
-    title: "Tabla de tipos",
-    subTitle: "Tabla de tipos de Pokémon",
-  },
-  {
-    path: "/favourites",
-    icon: <IoHeartOutline size={40} />,
-    title: "Favoritos",
-    subTitle: "Tus pokémons favoritos!",
-  },
-];
+import { usePathname } from "next/navigation";
 
 export const FullMenu = () => {
+  const pathname = usePathname();
+
+  const menuItems = [
+    {
+      path: "/main",
+      icon: (
+        <MdCatchingPokemon size={40} style={{ transform: "rotate(180deg)" }} />
+      ),
+      title: "Pokémons",
+      subTitle: "Todos los pokémon",
+    },
+    {
+      path: "/types-table",
+      icon: <IoCalculator size={40} />,
+      title: "Tabla de tipos",
+      subTitle: "Tabla de tipos de Pokémon",
+    },
+    {
+      path: "/favourites",
+      icon:
+        pathname === "/favourites" ? (
+          <IoHeart size={40} />
+        ) : (
+          <IoHeartOutline size={40} />
+        ),
+      title: "Favoritos",
+      subTitle: "Tus pokémons favoritos!",
+    },
+  ];
+
   const isFullMenuOpen = useUIStore((state) => state.isFullMenuOpen);
   const closeFullMenu = useUIStore((state) => state.closeFullMenu);
 

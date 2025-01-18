@@ -1,11 +1,15 @@
 "use client";
 
-import { IoCalculator, IoHeartOutline } from "react-icons/io5";
+import { IoCalculator, IoHeartOutline, IoHeart } from "react-icons/io5";
 import { RiNextjsLine } from "react-icons/ri";
 import { MdCatchingPokemon } from "react-icons/md";
 import { SideBarMenuItem } from "./SideBarMenuItem";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+
+export const SideBar = () => {
+const pathname = usePathname();
 
 const menuItems = [
   {
@@ -24,13 +28,18 @@ const menuItems = [
   },
   {
     path: "/favourites",
-    icon: <IoHeartOutline size={40} />,
+    icon:
+      pathname === "/favourites" ? (
+        <IoHeart size={40} />
+      ) : (
+        <IoHeartOutline size={40} />
+      ),
     title: "Favoritos",
     subTitle: "Tus pokémons favoritos!",
   },
 ];
 
-export const SideBar = () => {
+
   const [windowDimention, setWindowDimention] = useState({
     width: 0,
     height: 0,
