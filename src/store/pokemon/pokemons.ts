@@ -14,10 +14,17 @@ interface PokemonsState {
 //   return favourites
 // }
 
-const initialState: PokemonsState = {
-  favourites: {},
-  // ...getInitialState()
-}
+const getInitialState = (): PokemonsState => {
+  if (typeof window === "undefined") {
+    // Estamos en el servidor, retorna el estado vacío
+    return { favourites: {} };
+  }
+
+  const favourites = JSON.parse(localStorage.getItem("favourite-pokemons") ?? "{}");
+  return { favourites };
+};
+
+const initialState: PokemonsState = getInitialState();
 
 const pokemonsSlice = createSlice({
   name: "pokemons",
@@ -34,7 +41,7 @@ const pokemonsSlice = createSlice({
         state.favourites[id] = pokemon
       }
 
-      localStorage.setItem("favourite-pokemons", JSON.stringify(state.favourites))
+      // localStorage.setItem("favourite-pokemons", JSON.stringify(state.favourites))
 
     },
 
