@@ -82,6 +82,7 @@ export const PokemonCard = ({ pokemonA }: Props) => {
             height={70}
             alt={pokemonA.name}
             priority={false}
+            className="w-[70] h-[70] max-w-[70] max-h-[70]"
           />
 
           <p className="pt-2 text-lg font-semibold text-gray-50 capitalize">
