@@ -1,6 +1,6 @@
 import { Pokemon, PokemonsResponse } from "@/interfaces";
 import { pokemonTypes } from "@/interfaces/pokemon";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { TiMediaPlay } from "react-icons/ti";
@@ -9,9 +9,10 @@ interface Props {
   params: { name: string };
 }
 
+
 export async function generateStaticParams() {
   const data: PokemonsResponse = await fetch(
-    `https://pokeapi.co/api/v2/pokemon?limit=151/`
+    `https://pokeapi.co/api/v2/pokemon?limit=151`
   ).then((rest) => rest.json());
 
   const staticPokemonPages = data.results.map((pokemon) => ({
@@ -24,17 +25,25 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { name } = await Promise.resolve(params); // Resolviendo params de manera explícita
+
+  if (!name) {
+    return {
+      title: "Poke Api | Not found",
+      description: "Página del pokémon no encontrada",
+    };
+  }
+
   try {
-    const pokemon = await getPokemon(params.name);
+    const pokemon = await getPokemon(name);
     if (!pokemon) throw new Error("Pokemon not found");
-    
-    const { name } = pokemon;
+
+    const capitalizedPokeName =
+      pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
 
     return {
-      title: `Poke Api | ${name.charAt(0).toUpperCase() + name.slice(1)}`,
-      description: `Página del pokémon ${
-        name.charAt(0).toUpperCase() + name.slice(1)
-      }`,
+      title: `Poke Api | ${capitalizedPokeName}`,
+      description: `Página del pokémon ${capitalizedPokeName}`,
     };
   } catch (error) {
     return {
@@ -43,6 +52,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 }
+
+
 
 
 const getPokemon = async (name: string): Promise<Pokemon> => {
@@ -60,7 +71,8 @@ const getPokemon = async (name: string): Promise<Pokemon> => {
 };
 
 export default async function PokemonPage({ params }: Props) {
-  const pokemon = await getPokemon(params.name);
+  const { name } = await Promise.resolve(params)
+  const pokemon = await getPokemon(name) ;
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">
       <div className="relative flex flex-col items-center rounded-[20px] w-[700px] mx-auto bg-white bg-clip-border  shadow-lg  p-3">
