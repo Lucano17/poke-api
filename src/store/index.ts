@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import pokemonsReducer from './pokemon/pokemons'
+import { localStorageMiddleware } from './middlewares/localStorage-middleware'
 
 export const store = configureStore({
   reducer: {
     pokemons: pokemonsReducer
   },
+  
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware()
   //   .concat(localStorageMiddleware)
     

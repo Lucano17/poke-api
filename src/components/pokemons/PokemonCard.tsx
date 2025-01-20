@@ -5,7 +5,7 @@ import Image from "next/image";
 import { SimplePokemon } from "@/interfaces";
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { useAppDispatch, useAppSelector } from "@/store";
-import { toggleFavourite } from "@/store/pokemon/pokemons";
+import { setFavouritePokemons, toggleFavourite } from "@/store/pokemon/pokemons";
 import { getPokemon } from "@/actions/getSimplePokemon";
 import { useEffect, useState } from "react";
 import { pokemonTypes } from "@/interfaces/pokemon";
@@ -49,6 +49,13 @@ export const PokemonCard = ({ pokemonA }: Props) => {
     };
     fetchSimplePokemon();
   }, [name, pokemonA]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const favourites = JSON.parse(localStorage.getItem("favourite-pokemons") ?? "{}");
+      dispatch(setFavouritePokemons(favourites));
+    }
+  }, [dispatch]);
 
   return (
     <div className="mx-auto right-0 mt-2 w-55 ">
