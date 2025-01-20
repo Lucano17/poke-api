@@ -15,6 +15,15 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      textStroke: {
+        DEFAULT: '1px black',
+        sm: '0.5px black',
+        lg: '2px black',
+      },
+      textFill: {
+        DEFAULT: 'red',
+        transparent: 'transparent',
+      },
     },
     screens: {
       'sm2': '0px',
@@ -34,5 +43,7 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     }
   },
-  plugins: [],
+  plugins: [
+    // require("tailwindcss-text-fill-stroke")(),
+  ],
 }
