@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
 export default function HomePage() {
-    redirect("/mainp")
+    redirect("/main")
   return (
     <div>
       
