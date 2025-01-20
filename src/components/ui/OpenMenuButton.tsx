@@ -3,12 +3,12 @@
 import { IoMenu } from "react-icons/io5";
 import { FullMenu } from "./FullMenu";
 import { useUIStore } from "@/store/ui/ui-store";
-import { Press_Start_2P } from "next/font/google";
+// import { Press_Start_2P } from "next/font/google";
 
-const pressStart2P = Press_Start_2P({
-  subsets: ["latin"],
-  weight: "400",
-});
+// const pressStart2P = Press_Start_2P({
+//   subsets: ["latin"],
+//   weight: "400",
+// });
 
 export const OpenMenuButton = () => {
   const isFullMenuOpen = useUIStore((state) => state.isFullMenuOpen);
