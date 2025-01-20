@@ -1,8 +1,8 @@
-'use client' // Error components must be Client Components
+'use client'
 
 import { useEffect } from 'react'
 
-export default function Error({ error, reset, }: {
+export default function Error({ error }: {
   error: Error
   reset: () => void
 }) {

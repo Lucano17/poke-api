@@ -1,6 +1,6 @@
 import { Pokemon, PokemonsResponse } from "@/interfaces";
 import { pokemonTypes } from "@/interfaces/pokemon";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { TiMediaPlay } from "react-icons/ti";
@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: `Página del pokémon ${capitalizedPokeName}`,
     };
   } catch (error) {
+    console.log(error)
     return {
       title: "Poke Api | Not found",
       description: "Página del pokémon no encontrada",
@@ -66,6 +67,7 @@ const getPokemon = async (name: string): Promise<Pokemon> => {
 
     return pokemon;
   } catch (error) {
+    console.log(error)
     notFound();
   }
 };

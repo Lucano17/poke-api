@@ -44,7 +44,7 @@ export const FullMenu = () => {
     },
   ];
 
-  const isFullMenuOpen = useUIStore((state) => state.isFullMenuOpen);
+
   const closeFullMenu = useUIStore((state) => state.closeFullMenu);
 
   return (

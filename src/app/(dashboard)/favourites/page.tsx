@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import { FavouritePokemons, PokemonsGrid } from '@/components';
-import { IoHeartCircleOutline, IoHeartOutline } from 'react-icons/io5';
+import { FavouritePokemons } from '@/components';
 
 
 export const metadata: Metadata = {

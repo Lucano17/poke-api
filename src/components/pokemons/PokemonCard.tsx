@@ -8,7 +8,7 @@ import { useAppDispatch, useAppSelector } from "@/store";
 import { toggleFavourite } from "@/store/pokemon/pokemons";
 import { getPokemon } from "@/actions/getSimplePokemon";
 import { useEffect, useState } from "react";
-import { pokemonTypes, Type } from "@/interfaces/pokemon";
+import { pokemonTypes } from "@/interfaces/pokemon";
 
 interface Props {
   pokemonA: SimplePokemon;
@@ -17,7 +17,7 @@ interface Props {
 export const PokemonCard = ({ pokemonA }: Props) => {
   const [pokemon, setPokemon] = useState<SimplePokemon>();
 
-  const { id, name, types } = pokemonA || {};
+  const { id, name } = pokemonA || {};
   // const typeClass = pokemon?.types[0].type.name as keyof typeof pokemonTypes;
   // // const typeClass = pokemonTypes[type.type.name as keyof typeof pokemonTypes]?.class;
 
@@ -48,7 +48,7 @@ export const PokemonCard = ({ pokemonA }: Props) => {
       }
     };
     fetchSimplePokemon();
-  }, [name]);
+  }, [name, pokemonA]);
 
   return (
     <div className="mx-auto right-0 mt-2 w-55 ">

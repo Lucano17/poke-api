@@ -8,9 +8,9 @@ export const Search = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
+  // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setQuery(e.target.value);
+  // };
 
   // # Search to URL Params function
   const handleSearch = async (e: React.FormEvent<HTMLFormElement>) => {

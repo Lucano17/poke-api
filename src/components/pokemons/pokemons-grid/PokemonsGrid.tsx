@@ -1,6 +1,5 @@
 import React from "react";
-import { PokemonsResponse, SimplePokemon } from "@/interfaces";
-import Image from "next/image";
+import { SimplePokemon } from "@/interfaces";
 import { PokemonCard } from "@/components";
 import { Search } from "@/components/ui/Search";
 
@@ -8,7 +7,7 @@ interface Props {
   pokemons: SimplePokemon[];
 }
 
-const totalPokemons = 1025;
+// const totalPokemons = 1025;
 
 export const PokemonsGrid = ({ pokemons }: Props) => {
   return (

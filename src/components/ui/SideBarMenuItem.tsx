@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { JSX, useState } from "react";
+import { JSX } from "react";
 
 interface Props {
   path: string;

@@ -11,6 +11,7 @@ export const getPokemon = async (name: string): Promise<SimplePokemon> => {
 
     return pokemon;
   } catch (error) {
+    console.log(error)
     notFound();
   }
 };
