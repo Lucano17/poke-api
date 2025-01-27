@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^14.2.15",
-    "@reduxjs/toolkit": "^2.5.0",
+    "@reduxjs/toolkit": "1.9.5",
     "@tailwindcss/forms": "^0.5.10",
     "autoprefixer": "^10.4.20",
     "browserslist": "^4.24.4",
@@ -18,7 +18,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.4.0",
-    "react-redux": "^9.2.0",
+    "react-redux": "8.0.7",
     "reselect": "^5.1.1",
     "tailwindcss-text-fill-stroke": "^1.1.2",
     "zustand": "^5.0.3"

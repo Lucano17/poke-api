@@ -1,9 +1,8 @@
 import { SimplePokemon } from '@/interfaces';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface PokemonsState {
-  favourites: {[key: string]: SimplePokemon},
-
+interface PokemonsState { 
+  favourites: { [key: string]: SimplePokemon },
 }
 
 // const getInitialState = (): PokemonsState => {
@@ -24,34 +23,43 @@ const getInitialState = (): PokemonsState => {
   return { favourites };
 };
 
-const initialState: PokemonsState = getInitialState();
+const initialState:  PokemonsState = getInitialState();
+  // favourites: {},
+  // ...getInitialState(),
+  // '1': { id: '1', name: 'bulbasaur' },
+  // '3': { id: '3', name: 'venusaur' },
+  // '5': { id: '5', name: 'Charmeleon' },
+// }
 
 const pokemonsSlice = createSlice({
-  name: "pokemons",
+  name: 'pokemons',
   initialState,
   reducers: {
-    toggleFavourite(state, action: PayloadAction<SimplePokemon>) {
+
+    setFavouritePokemons( state, action: PayloadAction<{ [key: string]: SimplePokemon }> ) {
+      state.favourites = action.payload;
+    },
+
+    toggleFavourite( state, action: PayloadAction<SimplePokemon> ) {
+
       const pokemon = action.payload;
       const { id } = pokemon;
 
-      if (!!state.favourites[id]) {
-        delete state.favourites[id]
-        return
+      if ( !!state.favourites[id] ) {
+        delete state.favourites[id];
+        // return;
       } else {
-        state.favourites[id] = pokemon
+        state.favourites[id] = pokemon;
       }
 
-      // localStorage.setItem("favourite-pokemons", JSON.stringify(state.favourites))
+      // //TODO: No se debe de hacer en Redux
+      // localStorage.setItem('favorite-pokemons', JSON.stringify( state.favourites ) );
 
-    },
-
-    setFavouritePokemons(state, action: PayloadAction<{[key: string]: SimplePokemon}>) {
-      state.favourites = action.payload
     }
+
   }
 });
 
-export const { toggleFavourite, setFavouritePokemons } = pokemonsSlice.actions
+export const { toggleFavourite, setFavouritePokemons } = pokemonsSlice.actions;
 
-export default pokemonsSlice.reducer
-
+export default pokemonsSlice.reducer;

@@ -10,6 +10,7 @@ interface Props {
 }
 
 export const Providers = ({ children }: Props) => {
+  
   useEffect(() => {
 
     const favourites = JSON.parse(
@@ -17,5 +18,6 @@ export const Providers = ({ children }: Props) => {
     );
     store.dispatch(setFavouritePokemons(favourites))
   }, []);
+
   return <Provider store={store}>{children}</Provider>;
 };
