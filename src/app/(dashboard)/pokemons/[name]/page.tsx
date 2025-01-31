@@ -77,7 +77,7 @@ export default async function PokemonPage({ params }: Props) {
   const pokemon = await getPokemon(name) ;
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">
-      <div className="relative flex flex-col items-center rounded-[20px] w-[700px] sm2:w-[550px] 
+      <div className="relative flex flex-col items-center rounded-[20px] sm:w-[700px] sm2:w-[90%]
       mx-auto bg-white bg-clip-border  shadow-lg  p-3">
         <div className="mt-2 mb-8 w-full">
           <h1 className="px-2 text-2xl font-bold text-slate-700 capitalize">
@@ -94,7 +94,7 @@ export default async function PokemonPage({ params }: Props) {
             
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 px-2 w-full">
+        <div className="md:grid md:grid-cols-2 gap-4 px-2 sm2:flex sm2:flex-col sm2:w-[70%] md:w-full">
           <div className="flex flex-col items-start justify-center rounded-2xl bg-white bg-clip-border px-3 py-4  drop-shadow-lg gap-5 ">
             <p className="flex text-sm text-gray-600">Tipos</p>
             <div className="text-base font-medium text-navy-700 flex">
@@ -165,7 +165,7 @@ export default async function PokemonPage({ params }: Props) {
           </div>
         </div>
       </div>
-      <div className="flex flex-col sm2:w-[500px]  mt-10">
+      <div className="flex flex-col sm2:w-[90%] lg:w-[70%]  mt-10">
               <h2 className="font-bold text-xl m-auto">Movimientos</h2>
               <div className="flex flex-wrap">
                 <ul className="flex flex-wrap">
