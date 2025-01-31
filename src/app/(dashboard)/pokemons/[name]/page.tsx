@@ -77,7 +77,7 @@ export default async function PokemonPage({ params }: Props) {
   const pokemon = await getPokemon(name) ;
   return (
     <div className="flex mt-5 flex-col items-center text-slate-800">
-      <div className="relative flex flex-col items-center rounded-[20px] sm:w-[700px] sm2:w-[90%]
+      <div className="relative flex flex-col items-center rounded-[20px] sm:w-[90%] sm2:w-[90%]
       mx-auto bg-white bg-clip-border  shadow-lg  p-3">
         <div className="mt-2 mb-8 w-full">
           <h1 className="px-2 text-2xl font-bold text-slate-700 capitalize">
